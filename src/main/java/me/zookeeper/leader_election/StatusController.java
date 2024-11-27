@@ -1,21 +1,25 @@
 package me.zookeeper.leader_election;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class StatusController {
-    private final LeaderElectionService leaderElectionService;
 
-    public StatusController(LeaderElectionService leaderElectionService) {
-        this.leaderElectionService = leaderElectionService;
+    private final LeaderElection leaderElection;
+
+    @Autowired
+    public StatusController(LeaderElection leaderElection) {
+        this.leaderElection = leaderElection;
     }
 
     @GetMapping("/status")
-    public String getStatus() {
-        if (leaderElectionService.isLeader()) {
-            return "I am the leader!";
-        } else {
-            return "I am a worker.";
-        }
+    public ResponseEntity<String> getStatus() {
+        String status = leaderElection.isLeader() ? "I am the leader" : "I am a follower";
+        return ResponseEntity.ok(status);
     }
 }
