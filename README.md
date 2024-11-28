@@ -37,7 +37,7 @@ registration-and-discovery-zookeeper_Springboot
 - **Leader Election:** Implements a ZooKeeper-based mechanism to elect a leader among distributed services.
 - **Service Registry:** Nodes are dynamically registered with ZooKeeper.
 - **Spring Boot Integration:** Utilizes Spring Boot for configuration and dependency injection.
-- **REST API:** Exposes APIs to check the leader's status.
+- **REST API:** Exposes APIs to check the leader's status ⚠ and discover services.
 - **Logging:** Configurable log levels with Logback.
 
 ## Prerequisites
@@ -86,9 +86,13 @@ java -jar target/leader_election-0.0.1-SNAPSHOT.jar
 - **REST Endpoint:** Check the leader's status by accessing:
 
   ```bash
-  curl http://localhost:8080/status
+  curl http://localhost:8080/api/status
   ```
+- **REST Endpoint:** Discover Services by accessing:
 
+  ```bash
+  curl http://localhost:8080/api/services 
+  ```
 - Run multiple instances of the application on different ports to observe leader election behavior.
 
 ## Key Classes
