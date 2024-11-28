@@ -72,6 +72,9 @@ public class ServiceRegistry implements Watcher {
             e.printStackTrace();
         }
     }
+    public List<String> getAllServiceAddresses() {
+        return allServiceAddresses;
+    }
 
     private synchronized void updateAddresses() throws KeeperException, InterruptedException {
         List<String> workerZnodes = zooKeeper.getChildren(REGISTRY_ZNODE, this);
