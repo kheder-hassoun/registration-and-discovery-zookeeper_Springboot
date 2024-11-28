@@ -22,7 +22,7 @@ registration-and-discovery-zookeeper_Springboot
 │   │   │       ├── OnElectionAction.java   # Callback action on leader election
 │   │   │       ├── OnElectionCallback.java # Callback interface for election
 │   │   │       ├── ServiceRegistry.java    # Service registry for nodes
-│   │   │       ├── StatusController.java   # REST API to check the leader's status
+│   │   │       ├── Controllers.java   # REST API to check the leader's status
 │   │   │       ├── ZookeeperConfig.java    # Configuration for connecting to ZooKeeper
 │   │   │       └── ZookeeperLeaderElectionApplication.java
 │   │   └── resources/
